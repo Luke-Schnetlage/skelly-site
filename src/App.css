@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+.nav-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
+  background-color: #131313 !important;
+  color:#61dafb;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  padding-top: 0px;
+  margin-bottom: 10px;
+}

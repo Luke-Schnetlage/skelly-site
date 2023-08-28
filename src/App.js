@@ -1,5 +1,6 @@
 import './App.css';
-import Header from './pages/header';
+import Header from './pages/Header';
+import Youtube from './pages/Youtube';
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <header className="App-header">
         <Header />
       </header>
-
+      <Youtube />
       
     </div>
   );

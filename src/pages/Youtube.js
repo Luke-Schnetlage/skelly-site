@@ -7,11 +7,11 @@ var result = 10;
 var finalURL = `https://www.googleapis.com/youtube/v3/search?key=${OAUTH2_CLIENT_ID}&channelId=${channelId}&part=snippet,id&order-date&maxResults=${result}`;
 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 var myHeaders = new Headers();
-myHeaders.append("Access-Control-Allow-Origin", finalURL);
+//myHeaders.append("Access-Control-Allow-Origin", finalURL);
 myHeaders.append("Access-Control-Allow-Origin", "*");
 myHeaders.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 myHeaders.append("X-Requested-With", "XMLHttpRequest");
-myHeaders.append( "Content-Type", "application/json");
+myHeaders.append("Content-Type", "application/json");
 //myHeaders.append("Cookie", "__cfduid=db290300ecfe95ec1fe3bc92c388c3c991586618117");
 //myHeaders.append("Access-Control-Allow-Origin", "*");
 var requestOptions = {
@@ -38,9 +38,20 @@ class Youtube extends React.Component {
     }
 
     load() {
-        fetch(proxyUrl + finalURL, requestOptions)
-            //fetch(finalURL, requestOptions)
-            //fetch(finalURL, requestOptions)
+        //fetch(proxyUrl + finalURL, requestOptions)
+        fetch(finalURL, requestOptions)
+        /*fetch(finalURL, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+                "Access-Control-Allow-Origin": finalURL,
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                "X-Requested-With": "XMLHttpRequest",
+                "Content-Type": "application/json"
+            },
+            redirect: 'follow'
+        })*/
             .then((response) => response.json())
             .then((responseJSON) => {
                 //console.log(proxyUrl);
@@ -64,7 +75,7 @@ class Youtube extends React.Component {
                 {
                     this.state.resultyt.map((link, i) => {
                         console.log(link);
-                        var frame = <div key={i} className="youtube"><iframe  width="560" height="315" src={link + "&origin=" + originURL} title="YouTube video player" frameBorder="0" allowFullScreen></iframe></div>
+                        var frame = <div key={i} className="youtube"><iframe width="560" height="315" src={link + "&origin=" + originURL} title="YouTube video player" frameBorder="0" allowFullScreen></iframe></div>
                         return frame;
                     })
                 }

@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './pages/Header';
-import Youtube from './pages/Youtube';
+import Header from './Header';
+import Youtube from './Youtube';
 
 function App() {
   return (

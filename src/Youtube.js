@@ -1,4 +1,5 @@
 import React from "react";
+/*
 var OAUTH2_CLIENT_ID = 'AIzaSyBES-ALWvMahAmFpf3fjN31tl-qwLsoGEI';
 var channelId = 'UCFQMnBA3CS502aghlcr0_aw'; //coffeezilla channel id
 //var terryid = 'UCKbKAVA_H8euJbUBDeux8_Q';   terry's channel id
@@ -8,6 +9,7 @@ var finalURL = `https://www.googleapis.com/youtube/v3/search?key=${OAUTH2_CLIENT
 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 var myHeaders = new Headers();
 //myHeaders.append("Access-Control-Allow-Origin", finalURL);
+
 myHeaders.append("Access-Control-Allow-Origin", "*");
 myHeaders.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 myHeaders.append("X-Requested-With", "XMLHttpRequest");
@@ -22,9 +24,9 @@ var requestOptions = {
 };
 var originURL = "http://localhost:3000/";
 document.cookie = 'SameSite=None';
-//myHeaders.append("Authorization", "Bearer <MY_API_KEY>");
+myHeaders.append("Authorization", "Bearer <MY_API_KEY>");
 
-
+*/
 
 
 class Youtube extends React.Component {
@@ -32,26 +34,34 @@ class Youtube extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            resultyt: []
+            resultyt: [],
+            apiResponse: []
         };
         this.load = this.load.bind(this);
     }
 
+
+    componentDidMount() {
+
+    }
+
+
     load() {
+        /*
         //fetch(proxyUrl + finalURL, requestOptions)
         fetch(finalURL, requestOptions)
-        /*fetch(finalURL, {
-            mode: 'cors',
-            method: 'GET',
-            headers: {
-                "Access-Control-Allow-Origin": finalURL,
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-                "X-Requested-With": "XMLHttpRequest",
-                "Content-Type": "application/json"
-            },
-            redirect: 'follow'
-        })*/
+            /*fetch(finalURL, {
+                mode: 'cors',
+                method: 'GET',
+                headers: {
+                    "Access-Control-Allow-Origin": finalURL,
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Content-Type": "application/json"
+                },
+                redirect: 'follow'
+            })
             .then((response) => response.json())
             .then((responseJSON) => {
                 //console.log(proxyUrl);
@@ -66,28 +76,22 @@ class Youtube extends React.Component {
             .catch((error) => {
                 console.log(error);
             });
+            */
     }
 
     render() {
-        return (
-            <div>
-                <button onClick={this.load}>Fetch videos</button>
-                {
-                    this.state.resultyt.map((link, i) => {
-                        console.log(link);
-                        var frame = <div key={i} className="youtube"><iframe width="560" height="315" src={link + "&origin=" + originURL} title="YouTube video player" frameBorder="0" allowFullScreen></iframe></div>
-                        return frame;
-                    })
-                }
-                {this.frame}
-            </div>
-        );
+
+        this.state.apiResponse.map((link, i) => {
+            console.log(link);
+            this.setState(this.resultyt[i], <div key={i} className="youtube"><iframe width="560" height="315" src={this.apiResponse[i]} title="YouTube video player" frameBorder="0" allowFullScreen></iframe></div>);
+
+        })
+
+        return (this.state.resultyt[0]);
     }
 
 
 }
-
-
 
 
 export default Youtube;

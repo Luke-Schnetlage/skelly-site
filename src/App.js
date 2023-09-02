@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './Header';
-import Youtube from './Youtube';
+import Header from './components/Header';
+import Youtube from './components/Youtube';
 import { Component } from 'react';
 
 class App extends Component {
@@ -11,27 +11,36 @@ class App extends Component {
 
   callAPI() {
     fetch("http://localhost:9000/getYT")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
+      .then(res => res.json()) // Parse the response as JSON
+      .then(data => {
+        console.log("app.js data", data);
+        this.setState({ apiResponse: data });
+
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.callAPI();
   }
 
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <Header />
-        </header>
-        <Youtube apiResponse={this.state.apiResponse}/>
-        {/* <p className="App-intro">{this.state.apiResponse}</p>*/}
-      </div>
-    );
+    if (!Array.isArray(this.state.apiResponse) || this.state.apiResponse.length === 0) {
+      return <p>Loading...</p>; // or any other suitable message
+    } else {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <Header />
+            <Youtube apiResponse={this.state.apiResponse} />
+          </header>
+          
+        </div>
+      );
+    }
   }
-
-  
 }
 
 export default App;

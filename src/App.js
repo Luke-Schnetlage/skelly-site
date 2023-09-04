@@ -34,9 +34,10 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Header />
-            <Youtube apiResponse={this.state.apiResponse} />
           </header>
-          
+          <div className="content">
+            <Youtube apiResponse={this.state.apiResponse} />
+          </div>
         </div>
       );
     }

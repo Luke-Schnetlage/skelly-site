@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-logo {
@@ -14,14 +22,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
 .App-link {
@@ -39,6 +40,7 @@
 
 
 .nav-header{
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -48,6 +50,11 @@
   background-color: #131313 !important;
   color:#61dafb;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-  padding-top: 0px;
+  padding-top: 10px 0;
   margin-bottom: 10px;
+}
+
+.content {
+  margin-top: 150px; /* Adjust the margin-top to match the height of your header */
+  /* Add other styles for your main content here */
 }

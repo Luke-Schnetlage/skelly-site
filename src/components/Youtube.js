@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class Youtube extends Component {
     
     render() {
-        console.log('apiResponse type:', typeof this.props.apiResponse);
-        console.log('apiResponse content:', this.props.apiResponse);
+        //console.log('apiResponse type:', typeof this.props.apiResponse);
+        //console.log('apiResponse content:', this.props.apiResponse);
         const { apiResponse } = this.props;
 
         return (

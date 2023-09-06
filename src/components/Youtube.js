@@ -1,6 +1,34 @@
 import React, { Component } from "react";
 
 class Youtube extends Component {
+
+    render() {
+        //console.log('apiResponse type:', typeof this.props.apiResponse);
+        //console.log('apiResponse content:', this.props.apiResponse);
+        const { apiResponse } = this.props;
+        
+        return (
+
+            <div className="youtube">
+                <iframe
+                    width="560"
+                    height="315"
+                    src={apiResponse}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allowFullScreen
+                ></iframe>
+            </div>
+
+        );
+    }
+}
+
+
+export default Youtube;
+
+/**
+ * class Youtube extends Component {
     
     render() {
         //console.log('apiResponse type:', typeof this.props.apiResponse);
@@ -28,3 +56,4 @@ class Youtube extends Component {
 
 
 export default Youtube;
+ */
